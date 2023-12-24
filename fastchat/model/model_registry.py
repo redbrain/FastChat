@@ -522,3 +522,10 @@ register_model_info(
     "https://huggingface.co/meta-math",
     "MetaMath is a finetune of Llama2 on [MetaMathQA](https://huggingface.co/datasets/meta-math/MetaMathQA) that specializes in mathematical reasoning.",
 )
+
+register_model_info(
+    ["StripedHyena-Nous-7B"],
+    "StripedHyena-Nous-7B",
+    "https://huggingface.co/togethercomputer/StripedHyena-Nous-7B",
+    "A chat model developed by Together Research and collaborators at Nous Research."
+)

@@ -2066,6 +2066,16 @@ class SolarAdapter(BaseModelAdapter):
         return get_conv_template("solar")
 
 
+class StripedHyenaAdapter(BaseModelAdapter):
+    """Model adapter for togethercomputer/StripedHyena-Nous-7B"""
+
+    def match(self, model_path: str):
+        return "stripedhyena-nous-7b" in model_path.lower()
+
+    def get_default_conv_template(self, model_path: str) -> Conversation:
+        return get_conv_template("stripedhyena-nous-7b")
+
+
 # Note: the registration order matters.
 # The one registered earlier has a higher matching priority.
 register_model_adapter(PeftModelAdapter)
@@ -2147,6 +2157,7 @@ register_model_adapter(DeepseekChatAdapter)
 register_model_adapter(MetaMathAdapter)
 register_model_adapter(BagelAdapter)
 register_model_adapter(SolarAdapter)
+register_model_adapter(StripedHyenaAdapter)
 
 # After all adapters, try the default base adapter.
 register_model_adapter(BaseModelAdapter)

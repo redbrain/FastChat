@@ -1394,6 +1394,19 @@ register_conv_template(
     )
 )
 
+# StripedHyena-Nous-7B Chat Template
+# Reference: "https://huggingface.co/togethercomputer/StripedHyena-Nous-7B",
+# ### Instruction:\n{prompt}\n\n### Response:\n{response}
+register_conv_template(
+    Conversation(
+        name="stripedhyena-nous-7b",
+        system_message="",
+        roles=("### Instruction:", "### Response:"),
+        sep_style=SeparatorStyle.ADD_NEW_LINE_SINGLE,
+        sep="\n\n",
+    )
+)
+
 if __name__ == "__main__":
     from fastchat.conversation import get_conv_template
 
