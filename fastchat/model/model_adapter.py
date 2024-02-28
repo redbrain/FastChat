@@ -2268,6 +2268,19 @@ class GemmaAdapter(BaseModelAdapter):
         return get_conv_template("gemma")
 
 
+class MambaAdapter(BaseModelAdapter):
+    """The model adapter for Mamba"""
+
+    def match(self, model_path: str):
+        return "mamba" in model_path.lower()
+
+    def load_model(self, model_path: str, from_pretrained_kwargs: dict):
+        from fastchat.model.model_mamba import MambaModel
+        model = MambaModel(model_path)
+        revision = from_pretrained_kwargs.get("revision", "main")
+        tokenizer = AutoTokenizer.from_pretrained("EleutherAI/pythia-160m", revision=revision)
+        return model, tokenizer
+
 # Note: the registration order matters.
 # The one registered earlier has a higher matching priority.
 register_model_adapter(PeftModelAdapter)
@@ -2358,6 +2371,7 @@ register_model_adapter(SteerLMAdapter)
 register_model_adapter(LlavaAdapter)
 register_model_adapter(YuanAdapter)
 register_model_adapter(GemmaAdapter)
+register_model_adapter(MambaAdapter)
 
 # After all adapters, try the default base adapter.
 register_model_adapter(BaseModelAdapter)
