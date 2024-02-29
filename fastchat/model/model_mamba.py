@@ -18,5 +18,5 @@ class MambaModel:
         assert target == "cuda"
 
     def generate(self, input_ids, do_sample, temperature, max_new_tokens, top_k=1, top_p=0.0, min_p=0.0, **kwargs):
-        gen = self.model.generate(input_ids, max_new_tokens, top_k, top_p, min_p, temperature, **kwargs)
-        return gen[0].tolist()
+        output = self.model.generate(input_ids, max_new_tokens, top_k, top_p, min_p, temperature, **kwargs)
+        return output.tolist()
