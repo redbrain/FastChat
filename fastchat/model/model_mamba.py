@@ -9,7 +9,7 @@ class MambaModel:
         warnings.warn("Experimental support for Mamba.")
         
         self.config = SimpleNamespace(is_encoder_decoder=False)
-        self.model = MambaLMHeadModel.from_pretrained(model_path)
+        self.model = MambaLMHeadModel.from_pretrained(model_path, device="cuda")
         self.tokenizer = None
         self.model_path = model_path
 
