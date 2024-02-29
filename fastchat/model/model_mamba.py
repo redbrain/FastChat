@@ -1,6 +1,7 @@
 from types import SimpleNamespace
 import warnings
 
+import torch
 from mamba_ssm.models.mixer_seq_simple import MambaLMHeadModel
 
 
@@ -9,7 +10,7 @@ class MambaModel:
         warnings.warn("Experimental support for Mamba.")
         
         self.config = SimpleNamespace(is_encoder_decoder=False)
-        self.model = MambaLMHeadModel.from_pretrained(model_path, device="cuda")
+        self.model = MambaLMHeadModel.from_pretrained(model_path, device="cuda", dtype=torch.float16)
         self.tokenizer = None
         self.model_path = model_path
 
