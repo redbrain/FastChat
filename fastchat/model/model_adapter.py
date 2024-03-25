@@ -2272,7 +2272,7 @@ class MambaAdapter(BaseModelAdapter):
     """The model adapter for Mamba"""
 
     def match(self, model_path: str):
-        return "mamba" in model_path.lower()
+        return True # "mamba" in model_path.lower() # fix later
 
     def load_model(self, model_path: str, from_pretrained_kwargs: dict):
         from fastchat.model.model_mamba import MambaModel
