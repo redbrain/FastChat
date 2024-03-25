@@ -2283,6 +2283,7 @@ class MambaAdapter(BaseModelAdapter):
 
 # Note: the registration order matters.
 # The one registered earlier has a higher matching priority.
+register_model_adapter(MambaAdapter)
 register_model_adapter(PeftModelAdapter)
 register_model_adapter(StableVicunaAdapter)
 register_model_adapter(VicunaAdapter)
@@ -2371,7 +2372,6 @@ register_model_adapter(SteerLMAdapter)
 register_model_adapter(LlavaAdapter)
 register_model_adapter(YuanAdapter)
 register_model_adapter(GemmaAdapter)
-register_model_adapter(MambaAdapter)
 
 # After all adapters, try the default base adapter.
 register_model_adapter(BaseModelAdapter)
